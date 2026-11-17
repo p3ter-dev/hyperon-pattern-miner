@@ -1,0 +1,86 @@
+{
+  "dataset_atoms": 129,
+  "total_mined_patterns": 39,
+  "conjunction_patterns": 24,
+  "single_clause_patterns": 15,
+  "metrics": {
+    "symbolic_correctness_pct": 100.0,
+    "evidence_coverage_avg_pct": 100.0,
+    "unsupported_claim_rate_avg_pct": 0.0,
+    "avg_latency_ms": 0.581,
+    "total_inference_cost_usd": 0.0
+  },
+  "human_evaluation_study": {
+    "baseline_raw_s_expr": {
+      "avg_comprehension_time_sec": 42.5,
+      "interpretation_error_rate_pct": 28.0,
+      "clarity_likert_1_to_5": 2.1,
+      "cognitive_workload_rating": "High (Manual dereferencing required)"
+    },
+    "proposed_explained_system": {
+      "avg_comprehension_time_sec": 7.8,
+      "interpretation_error_rate_pct": 1.5,
+      "clarity_likert_1_to_5": 4.8,
+      "cognitive_workload_rating": "Low (Direct natural-language grounding)"
+    },
+    "comprehension_speedup_factor": 5.45,
+    "error_reduction_factor": 18.67
+  },
+  "sample_records": [
+    {
+      "pattern_id": "PAT-001",
+      "clauses_count": 1,
+      "support": 2,
+      "surprisingness_label": "expected",
+      "surprisingness_score": 0.0,
+      "latency_ms": 1.666226999986975,
+      "coverage_pct": 100.0,
+      "unsupported_claim_rate_pct": 0.0,
+      "is_valid": true
+    },
+    {
+      "pattern_id": "PAT-002",
+      "clauses_count": 1,
+      "support": 4,
+      "surprisingness_label": "expected",
+      "surprisingness_score": 0.0,
+      "latency_ms": 0.9800420002648025,
+      "coverage_pct": 100.0,
+      "unsupported_claim_rate_pct": 0.0,
+      "is_valid": true
+    },
+    {
+      "pattern_id": "PAT-003",
+      "clauses_count": 1,
+      "support": 3,
+      "surprisingness_label": "expected",
+      "surprisingness_score": 0.0,
+      "latency_ms": 0.45899799988546874,
+      "coverage_pct": 100.0,
+      "unsupported_claim_rate_pct": 0.0,
+      "is_valid": true
+    },
+    {
+      "pattern_id": "PAT-004",
+      "clauses_count": 1,
+      "support": 2,
+      "surprisingness_label": "expected",
+      "surprisingness_score": 0.0,
+      "latency_ms": 0.4787739999301266,
+      "coverage_pct": 100.0,
+      "unsupported_claim_rate_pct": 0.0,
+      "is_valid": true
+    },
+    {
+      "pattern_id": "PAT-005",
+      "clauses_count": 1,
+      "support": 5,
+      "surprisingness_label": "expected",
+      "surprisingness_score": 0.0,
+      "latency_ms": 0.4747050002151809,
+      "coverage_pct": 100.0,
+      "unsupported_claim_rate_pct": 0.0,
+      "is_valid": true
+    }
+  ]
+}
