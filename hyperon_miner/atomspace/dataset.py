@@ -116,3 +116,4 @@ def load_commonsense_atomspace() -> AtomSpace:
     space.add(EvaluationLink((p_eats, ListLink((ConceptNode("penguin"), c_fish_food)))))
 
     return space
+

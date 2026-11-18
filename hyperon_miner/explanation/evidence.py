@@ -116,3 +116,4 @@ class EvidenceExtractor:
             allowed_predicates=allowed_predicates,
             allowed_attributes=allowed_attributes
         )
+

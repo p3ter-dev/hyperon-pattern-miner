@@ -170,3 +170,4 @@ Witnesses: [{'X': 'whale'}, {'X': 'dolphin'}]
 **Defense:** 
 1. **Expressivity boundary:** The explanation quality depends on the richness of predicates in the AtomSpace.
 2. **Extreme pattern lengths:** For conjunctions with $>10$ clauses, explanation text can become verbose, necessitating hierarchical summarization.
+

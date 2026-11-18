@@ -229,3 +229,4 @@ class AtomSpace:
                     witnesses.pop()
 
         return list(_extend_match(0, {}, []))
+

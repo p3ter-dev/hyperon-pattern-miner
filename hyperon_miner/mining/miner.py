@@ -192,3 +192,4 @@ class HyperonPatternMiner:
                     pattern_counter += 1
 
         return mined_patterns
+
