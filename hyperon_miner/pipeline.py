@@ -19,12 +19,19 @@ class HyperonExplanationPipeline:
         self,
         atomspace: AtomSpace,
         min_support: int = 2,
-        prefer_llm: bool = False
+        prefer_llm: bool = False,
+        api_key: Optional[str] = None,
+        model: str = "gemini-1.5-flash"
     ):
         self.atomspace = atomspace
         self.miner = HyperonPatternMiner(atomspace, min_support=min_support)
         self.validator = DeterministicValidator()
-        self.explanation_engine = ExplanationEngine(prefer_llm=prefer_llm, validator=self.validator)
+        self.explanation_engine = ExplanationEngine(
+            prefer_llm=prefer_llm,
+            validator=self.validator,
+            api_key=api_key,
+            model=model
+        )
 
     def run_mining(self, target_variable: str = "X") -> List[MinedPattern]:
         """Step 1: Deterministic Pattern Mining."""

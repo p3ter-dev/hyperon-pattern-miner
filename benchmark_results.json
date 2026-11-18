@@ -7,7 +7,7 @@
     "symbolic_correctness_pct": 100.0,
     "evidence_coverage_avg_pct": 100.0,
     "unsupported_claim_rate_avg_pct": 0.0,
-    "avg_latency_ms": 0.581,
+    "avg_latency_ms": 722.022,
     "total_inference_cost_usd": 0.0
   },
   "human_evaluation_study": {
@@ -33,7 +33,7 @@
       "support": 2,
       "surprisingness_label": "expected",
       "surprisingness_score": 0.0,
-      "latency_ms": 1.666226999986975,
+      "latency_ms": 820.4662410007586,
       "coverage_pct": 100.0,
       "unsupported_claim_rate_pct": 0.0,
       "is_valid": true
@@ -41,10 +41,10 @@
     {
       "pattern_id": "PAT-002",
       "clauses_count": 1,
-      "support": 4,
+      "support": 5,
       "surprisingness_label": "expected",
       "surprisingness_score": 0.0,
-      "latency_ms": 0.9800420002648025,
+      "latency_ms": 917.5957600000402,
       "coverage_pct": 100.0,
       "unsupported_claim_rate_pct": 0.0,
       "is_valid": true
@@ -52,10 +52,10 @@
     {
       "pattern_id": "PAT-003",
       "clauses_count": 1,
-      "support": 3,
+      "support": 2,
       "surprisingness_label": "expected",
       "surprisingness_score": 0.0,
-      "latency_ms": 0.45899799988546874,
+      "latency_ms": 818.2341620004081,
       "coverage_pct": 100.0,
       "unsupported_claim_rate_pct": 0.0,
       "is_valid": true
@@ -63,10 +63,10 @@
     {
       "pattern_id": "PAT-004",
       "clauses_count": 1,
-      "support": 2,
+      "support": 4,
       "surprisingness_label": "expected",
       "surprisingness_score": 0.0,
-      "latency_ms": 0.4787739999301266,
+      "latency_ms": 919.2672270000912,
       "coverage_pct": 100.0,
       "unsupported_claim_rate_pct": 0.0,
       "is_valid": true
@@ -74,10 +74,10 @@
     {
       "pattern_id": "PAT-005",
       "clauses_count": 1,
-      "support": 5,
+      "support": 3,
       "surprisingness_label": "expected",
       "surprisingness_score": 0.0,
-      "latency_ms": 0.4747050002151809,
+      "latency_ms": 626.5510080002059,
       "coverage_pct": 100.0,
       "unsupported_claim_rate_pct": 0.0,
       "is_valid": true

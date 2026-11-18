@@ -20,14 +20,28 @@ from hyperon_miner.pipeline import HyperonExplanationPipeline
 from hyperon_miner.explanation.evidence import EvidenceExtractor
 
 
-def run_evaluation_suite(min_support: int = 2) -> Dict[str, Any]:
+import argparse
+
+def run_evaluation_suite(
+    min_support: int = 2,
+    prefer_llm: bool = False,
+    api_key: Optional[str] = None,
+    model: str = "gemini-1.5-flash"
+) -> Dict[str, Any]:
     print("=" * 80)
-    print("STARTING REPRODUCIBLE EXPERIMENTAL EVALUATION")
+    engine_name = f"Gemini ({model})" if prefer_llm else "LocalSemanticSynthesizer"
+    print(f"STARTING REPRODUCIBLE EXPERIMENTAL EVALUATION [Engine: {engine_name}]")
     print("=" * 80)
 
     # 1. Initialize environment
     kb = load_commonsense_atomspace()
-    pipeline = HyperonExplanationPipeline(kb, min_support=min_support)
+    pipeline = HyperonExplanationPipeline(
+        kb,
+        min_support=min_support,
+        prefer_llm=prefer_llm,
+        api_key=api_key,
+        model=model
+    )
 
     # 2. Mine patterns
     t0 = time.perf_counter()
@@ -135,4 +149,16 @@ def run_evaluation_suite(min_support: int = 2) -> Dict[str, Any]:
 
 
 if __name__ == "__main__":
-    run_evaluation_suite(min_support=2)
+    parser = argparse.ArgumentParser(description="Run Hyperon Miner Experimental Evaluation Suite")
+    parser.add_argument("--min-support", type=int, default=2, help="Minimum support threshold (default: 2)")
+    parser.add_argument("--use-gemini", action="store_true", help="Evaluate using Google Gemini API")
+    parser.add_argument("--gemini-api-key", type=str, default=None, help="Gemini API Key (or set GEMINI_API_KEY env var)")
+    parser.add_argument("--model", type=str, default="gemini-1.5-flash", help="Gemini model name")
+    args = parser.parse_args()
+
+    run_evaluation_suite(
+        min_support=args.min_support,
+        prefer_llm=args.use_gemini or bool(args.gemini_api_key),
+        api_key=args.gemini_api_key,
+        model=args.model
+    )

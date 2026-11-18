@@ -95,6 +95,8 @@ $$S(\mathcal{P}) = \begin{cases}
 Python 3.10+ (Built entirely with standard library—no mandatory external pip packages).
 
 ### Running the Demonstration CLI
+
+#### Option A: Offline Mode (Default, Zero Cost, No API key needed)
 ```bash
 # View top 5 mined patterns with baseline vs proposed explanations
 python3 main.py --limit 5
@@ -104,6 +106,19 @@ python3 main.py --filter-surprising --limit 5
 
 # Adjust minimum support threshold
 python3 main.py --min-support 3
+```
+
+#### Option B: Live Google Gemini Mode (Using Gemini API Key)
+```bash
+# Pass key directly via CLI flag:
+python3 main.py --gemini-api-key "AIzaSy..." --limit 5
+
+# Or export as an environment variable:
+export GEMINI_API_KEY="AIzaSy..."
+python3 main.py --use-gemini --limit 5
+
+# Run full benchmark evaluation with Gemini:
+python3 benchmark/run_experiments.py --use-gemini
 ```
 
 ### Running Unit Tests

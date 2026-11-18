@@ -6,6 +6,7 @@ explanation generation, and zero-hallucination validation.
 """
 
 import sys
+import os
 import argparse
 import json
 from hyperon_miner.atomspace.dataset import load_commonsense_atomspace
@@ -27,7 +28,15 @@ def main():
     parser.add_argument("--limit", type=int, default=5, help="Number of patterns to display (default: 5)")
     parser.add_argument("--json", action="store_true", help="Output full JSON results")
     parser.add_argument("--filter-surprising", action="store_true", help="Show only surprising patterns")
+    parser.add_argument("--use-gemini", action="store_true", help="Use Google Gemini API for explanation generation")
+    parser.add_argument("--offline", action="store_true", help="Force offline mode using local synthesizer even if API key exists")
+    parser.add_argument("--gemini-api-key", type=str, default=None, help="Gemini API Key (or set in .env)")
+    parser.add_argument("--model", type=str, default="gemini-1.5-flash", help="Gemini model name (default: gemini-1.5-flash)")
     args = parser.parse_args()
+
+    # Determine if Gemini / LLM should be activated
+    has_api_key = bool(args.gemini_api_key or os.environ.get("GEMINI_API_KEY"))
+    prefer_llm = (not args.offline) and (args.use_gemini or has_api_key)
 
     print_banner()
 
@@ -36,7 +45,13 @@ def main():
     print(f"      Loaded {atomspace.size()} atoms (Nodes, InheritanceLinks, EvaluationLinks).")
 
     print(f"\n[2/4] Executing Hyperon Pattern Miner (min_support={args.min_support})...")
-    pipeline = HyperonExplanationPipeline(atomspace, min_support=args.min_support)
+    pipeline = HyperonExplanationPipeline(
+        atomspace,
+        min_support=args.min_support,
+        prefer_llm=prefer_llm,
+        api_key=args.gemini_api_key,
+        model=args.model
+    )
     all_patterns = pipeline.run_mining("X")
     print(f"      Discovered {len(all_patterns)} total frequent patterns.")
 
