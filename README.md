@@ -155,19 +155,3 @@ Witnesses: [{'X': 'whale'}, {'X': 'dolphin'}]
 > *Audit Status: PASSED | Evidence Coverage: 100.0% | Unsupported Claim Rate: 0.0%*
 
 ---
-
-## 6. Mentor Defense & Presentation Guide
-
-### Key Questions & Defenses
-
-#### Q1: "Why not let an LLM do the pattern mining directly using in-context learning?"
-**Defense:** LLMs are non-deterministic sequence predictors. They cannot guarantee complete hypergraph isomorphism, sound variable valuation over thousands of hyperedges, or exact mathematical support counting. The mining and verification must stay strictly symbolic in Hyperon; the LLM is solely an explainability interface.
-
-#### Q2: "How do you ensure the LLM does not hallucinate false common-sense facts (e.g. claiming dolphins are fish)?"
-**Defense:** The **Deterministic Validation Gate** intercepts the generated text before display. It extracts all mentioned entities, relations, and numbers, cross-referencing them against the `EvidenceBundle`. If an ungrounded entity (e.g. "cheetah" or "fish classification") is detected, the validator rejects the explanation and triggers a self-healing rollback.
-
-#### Q3: "What are the limitations of this approach?"
-**Defense:** 
-1. **Expressivity boundary:** The explanation quality depends on the richness of predicates in the AtomSpace.
-2. **Extreme pattern lengths:** For conjunctions with $>10$ clauses, explanation text can become verbose, necessitating hierarchical summarization.
-
