@@ -38,7 +38,7 @@ def compute_surprisingness(
         return SurprisingnessResult(p_empirical, (p_empirical, p_empirical), 0.0, "expected")
 
     # under block independence, expected joint probability is product of marginals
-    # marginal probabilities of individual pieces
+    # marginal probabilities of individual pieces / each subclause support
     clause_probs = [s / universe_size for s in sub_clause_supports]
     p_independent = 1.0
     for cp in clause_probs:
