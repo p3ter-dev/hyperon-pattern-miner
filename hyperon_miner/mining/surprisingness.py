@@ -32,23 +32,26 @@ def compute_surprisingness(
     if universe_size <= 0:
         return SurprisingnessResult(0.0, (0.0, 0.0), 0.0, "expected")
 
-    p_empirical = pattern_support / universe_size
+    p_empirical = pattern_support / universe_size # observed probability of the pattern
 
     if not sub_clause_supports:
         return SurprisingnessResult(p_empirical, (p_empirical, p_empirical), 0.0, "expected")
 
-    # Under block independence, expected joint probability is product of marginals
+    # under block independence, expected joint probability is product of marginals
+    # marginal probabilities of individual pieces
     clause_probs = [s / universe_size for s in sub_clause_supports]
     p_independent = 1.0
     for cp in clause_probs:
-        p_independent *= max(cp, epsilon)
+        p_independent *= max(cp, epsilon) # joint probability of independent clauses
 
-    # Upper and lower uncertainty bounds (Hyperon style interval)
-    e_min = max(p_independent * 0.75, epsilon)
-    e_max = min(p_independent * 1.35, 1.0)
+    # Upper and lower uncertainty bounds
+    # expected interval
+    e_min = max(p_independent * 0.75, epsilon) # lower bound of independence
+    e_max = min(p_independent * 1.35, 1.0) # upper bound of independence
 
     if p_empirical > e_max:
-        # Surprisingly frequent: empirical probability exceeds upper bound of independence
+        # surprisingly frequent: empirical probability exceeds upper bound of independence
+        # score measures the relative divergence from the independence interval
         score = (p_empirical - e_max) / max(e_max, epsilon)
         label = "surprisingly_frequent"
     elif p_empirical < e_min:
